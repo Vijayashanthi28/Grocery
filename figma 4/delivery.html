@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secured Checkup</title>
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+        <!----Green Top BAr------>
+    <div class="top-bar">
+        <div class="contact">
+              <span><i class="fas fa-phone"></i> +91 87642 987687</span>
+              <span><i class="fab fa-whatsapp"></i> +91 87642 987687</span>
+        </div>
+        <div class="headline">World Fastest online Shopping Destination</div>
+        <div class="location-account">
+         <span id="current-location-btn" onclick="showPopup()">Current Location <i class="fas fa-chevron-down"></i></span>
+            <span id="account-btn" onclick="showAccountPopup()">Account <i class="fas fa-chevron-down"></i></span>
+            <span onclick="showLoginPopup()"><i class="fas fa-user-circle"></i> Login/LogOut</span>
+      </div>
+    </div>
+    <!----------Navbar-->
+    <header class="header">
+        <div class="logo-section">
+            <img src="logo.png">
+            <h1>Grocery Hub</h1>
+        </div>
+        <nav class="nav-links">
+             <a href="index.html" class="active">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="deals.html">Deals</a>
+        </nav>
+<div class="icons">
+            <div onclick="toggleSearch()">
+                <i class="fas fa-search"></i>
+                <p>Search</p>
+            </div>
+            <div onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Cart</p>
+            </div>
+            <div onclick="toggleCart()">
+                <i class="fas fa-heart"></i>
+                <p>Liked</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Location Popup Overlay -->
+    <div class="popup-overlay" id="popup-overlay" onclick="closePopupOutside(event)">
+        <div class="location-popup">
+            <button class="close-btn" onclick="closePopup()">&times;</button>
+            <h2 class="popup-title">Choose your Location</h2>
+            <p class="popup-subtitle">Select a delivery location to see product availability and delivery options</p>
+            
+            <button class="change-address-btn">Change Your Address</button>
+            
+            <div class="divider">
+                <span class="or-text">Or enter an Indian pincode</span>
+            </div>
+            
+            <div class="pincode-section">
+                <div class="pincode-input-group">
+                    <input type="text" class="pincode-input" placeholder="XXXXX" maxlength="6" >
+                    <button class="apply-btn">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Popup Overlay -->
+    <div class="popup-overlay" id="account-popup-overlay" onclick="closeAccountPopupOutside(event)">
+        <div class="account-popup">
+            <button class="close-btn" onclick="closeAccountPopup()">&times;</button>
+            
+            <button class="sign-out-btn">Sign Out</button>
+            
+            <h3 class="account-section-title">New Customer ? <span style="color: rgb(2, 54, 2);">Start Here</span></h3>
+            
+            <h3 class="account-section-title">Your Account</h3>
+            <ul class="account-menu">
+                <li>• Your Account</li>
+                <li>• Your Orders</li>
+                <li>• Your Wish List</li>
+                <li>• Your Subscribe & Save Items</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Login Popup Overlay -->
+    <div class="popup-overlay" id="login-popup-overlay" onclick="closeLoginPopupOutside(event)">
+        <div class="login-popup">
+            <div class="login-image">
+                <img src="login popup.png" alt="Grocery Items">
+                 <button class="close-btn" onclick="closeLoginPopup()">&times;</button>
+            </div>
+            
+            <h2 class="login-title">Login</h2>
+            <p class="login-subtitle">Enter Your Phone Number to proceed</p>
+            
+            <div class="phone-input-group">
+                <input type="tel" id="phone-input" placeholder="Enter 10 digit phone number" maxlength="10">
+            </div>
+            
+            <button id="continue-btn">Continue</button>
+            
+            <p class="terms-text">By clicking, I accept Terms & Condition.</p>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" onclick="closeCart()">
+        <div class="cart-container" onclick="event.stopPropagation()">
+            <div class="cart-header">
+                <div>
+                    <h2>My Cart</h2>
+                    <span>3 Items</span>
+                </div>
+                <button class="close-btn" onclick="closeCart()">×</button>
+            </div>
+
+            <!-- Cart Item 1 -->
+            <div class="cart-item">
+                <img src="SPAR Select Urad Dal 500G.png" alt="SPAR Select Urid Dal" class="item-image">
+                <div class="item-details">
+                    <div class="item-name">SPAR Select Urid Dal</div>
+                    <div class="item-weight">500G</div>
+                    <div class="item-price">₹110</div>
+                    <div class="save-later">
+                        Save For later <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="bill-details">
+                    <div class="bill-header">Bill Details</div>
+                    <div class="bill-row">
+                        <span>Total qty (1)</span>
+                        <span>₹100</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Handling fee</span>
+                        <span>₹10</span>
+                    </div>
+                    <div class="bill-row total">
+                        <span>To Pay</span>
+                        <span>₹110/-</span>
+                    </div>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Cart Item 2 -->
+            <div class="cart-item">
+                <img src="badam.png" alt="Drink" class="item-image">
+                <div class="item-details">
+                    <div class="item-name">Badam Drink</div>
+                    <div class="item-weight">150 ML</div>
+                    <div class="item-price">₹40</div>
+                    <div class="save-later">
+                        Save For later <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="bill-details">
+                    <div class="bill-header">Bill Details</div>
+                    <div class="bill-row">
+                        <span>Total qty (1)</span>
+                        <span>₹30</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Handling fee</span>
+                        <span>₹10</span>
+                    </div>
+                    <div class="bill-row total">
+                        <span>To Pay</span>
+                        <span>₹40/-</span>
+                    </div>
+                   <a href="checkout.html"> <button class="buy-now-btn">Buy Now</button></a>
+                </div>
+            </div>
+
+            <!-- Cart Item 3 -->
+            <div class="cart-item">
+                <img src="Apple Royalgala.png" alt="Apple Royalgala" class="item-image">
+                <div class="item-details">
+                    <div class="item-name">Apple Royalgala</div>
+                    <div class="item-weight">500kg</div>
+                    <div class="item-price">₹114.5</div>
+                    <div class="save-later">
+                        Save For later <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="bill-details">
+                    <div class="bill-header">Bill Details</div>
+                    <div class="bill-row">
+                        <span>Total qty (1)</span>
+                        <span>₹100</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Handling fee</span>
+                        <span>₹14.5</span>
+                    </div>
+                    <div class="bill-row total">
+                        <span>To Pay</span>
+                        <span>₹114.5/-</span>
+                    </div>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Product Details Section -->
+<section class="product-detail">
+  <div class="product-left">
+    <img src="badam.png" alt="Badam Milk" />
+    <h3>Jersey Badam Flavoured Milk 190ML</h3>
+    <p>Order Placed....! <span class="heart">❤️</span></p>
+  </div>
+
+  <div class="product-right">
+    <h2>Secured CheckUp</h2>
+    <h4>Product Description :</h4>
+    <p>Indulge in the rich and creamy taste of Badamgir Badam Drink, made with high-quality almonds and natural ingredients. This delicious drink is perfect for those looking for a healthy and refreshing beverage.</p>
+
+    <h4>Key Features</h4>
+    <ul>
+      <li>Made with high-quality almonds and natural ingredients</li>
+      <li>Rich in nutrients and protein</li>
+      <li>Delicious and creamy taste</li>
+      <li>Perfect for a healthy and refreshing drink</li>
+    </ul>
+
+    <h4>Product Details</h4>
+    <ul>
+      <li><strong>Product Name:</strong> Badamgir Badam Drink</li>
+      <li><strong>Quantity:</strong> 190ml</li>
+      <li><strong>Ingredients:</strong> Almonds, Milk, Sugar, Saffron, Cardamom</li>
+      <li><strong>Shelf Life:</strong> 6 months from manufacturing date</li>
+    </ul>
+
+    <p><strong>Quality No :</strong> 1</p>
+    <h4 class="delivery-date">Delivery by Tue 28 June</h4>
+
+    <!-- Order Tracking -->
+    <div class="tracking-bar">
+      <div class="step active">
+        <div class="circle"></div>
+        <span>Ordered<br><small>15 June</small></span>
+      </div>
+      <div class="step">
+        <div class="circle"></div>
+        <span>Shipped<br><small>18 June</small></span>
+      </div>
+      <div class="step">
+        <div class="circle"></div>
+        <span>Out of Delivery<br><small>27 June</small></span>
+      </div>
+      <div class="step">
+        <div class="circle"></div>
+        <span>Delivery<br><small>28 June</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Explore More Section -->
+<section class="explore-more">
+  <h3>Explore More <span>See More</span></h3>
+  <div class="explore-grid">
+    <div class="item"><img src="tropicana.png" alt="Juice" /></div>
+    <div class="item"><img src="Nandini Goodlife Milk 1L.png" alt="Goodlife" /></div>
+    <div class="item"><img src="Nestle Milkmaid Condensed Milk 380 g (Tin).png" alt="Milkmaid" /></div>
+    <div class="item"><img src="Nandini Fresh Curd 500GM.png" alt="Curd" /></div>
+  </div>
+</section>
+
+   
+     <script src="script.js"></script>
+</body>
+</html>

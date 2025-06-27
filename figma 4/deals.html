@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deals</title>
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+     <!----Green Top BAr------>
+    <div class="top-bar">
+        <div class="contact">
+              <span><i class="fas fa-phone"></i> +91 87642 987687</span>
+              <span><i class="fab fa-whatsapp"></i> +91 87642 987687</span>
+        </div>
+        <div class="headline">World Fastest online Shopping Destination</div>
+        <div class="location-account">
+         <span id="current-location-btn" onclick="showPopup()">Current Location <i class="fas fa-chevron-down"></i></span>
+            <span id="account-btn" onclick="showAccountPopup()">Account <i class="fas fa-chevron-down"></i></span>
+            <span onclick="showLoginPopup()"><i class="fas fa-user-circle"></i> Login/LogOut</span>
+      </div>
+    </div>
+    <!----------Navbar-->
+    <header class="header">
+        <div class="logo-section">
+            <img src="logo.png">
+            <h1>Grocery Hub</h1>
+        </div>
+        <nav class="nav-links">
+             <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="deals.html" class="active">Deals</a>
+        </nav>
+<div class="icons">
+            <div onclick="toggleSearch()">
+                <i class="fas fa-search"></i>
+                <p>Search</p>
+            </div>
+            <div onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Cart</p>
+            </div>
+            <div onclick="toggleCart()">
+                <i class="fas fa-heart"></i>
+                <p>Liked</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Location Popup Overlay -->
+    <div class="popup-overlay" id="popup-overlay" onclick="closePopupOutside(event)">
+        <div class="location-popup">
+            <button class="close-btn" onclick="closePopup()">&times;</button>
+            <h2 class="popup-title">Choose your Location</h2>
+            <p class="popup-subtitle">Select a delivery location to see product availability and delivery options</p>
+            
+            <button class="change-address-btn">Change Your Address</button>
+            
+            <div class="divider">
+                <span class="or-text">Or enter an Indian pincode</span>
+            </div>
+            
+            <div class="pincode-section">
+                <div class="pincode-input-group">
+                    <input type="text" class="pincode-input" placeholder="XXXXX" maxlength="6" >
+                    <button class="apply-btn">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Popup Overlay -->
+    <div class="popup-overlay" id="account-popup-overlay" onclick="closeAccountPopupOutside(event)">
+        <div class="account-popup">
+            <button class="close-btn" onclick="closeAccountPopup()">&times;</button>
+            
+            <button class="sign-out-btn">Sign Out</button>
+            
+            <h3 class="account-section-title">New Customer ? <span style="color: rgb(2, 54, 2);">Start Here</span></h3>
+            
+            <h3 class="account-section-title">Your Account</h3>
+            <ul class="account-menu">
+                <li>• Your Account</li>
+                <li>• Your Orders</li>
+                <li>• Your Wish List</li>
+                <li>• Your Subscribe & Save Items</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Login Popup Overlay -->
+    <div class="popup-overlay" id="login-popup-overlay" onclick="closeLoginPopupOutside(event)">
+        <div class="login-popup">
+            <div class="login-image">
+                <img src="login popup.png" alt="Grocery Items">
+                 <button class="close-btn" onclick="closeLoginPopup()">&times;</button>
+            </div>
+            
+            <h2 class="login-title">Login</h2>
+            <p class="login-subtitle">Enter Your Phone Number to proceed</p>
+            
+            <div class="phone-input-group">
+                <input type="tel" id="phone-input" placeholder="Enter 10 digit phone number" maxlength="10">
+            </div>
+            
+            <button id="continue-btn">Continue</button>
+            
+            <p class="terms-text">By clicking, I accept Terms & Condition.</p>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" onclick="closeCart()">
+        <div class="cart-container" onclick="event.stopPropagation()">
+            <div class="cart-header">
+                <div>
+                    <h2>My Cart</h2>
+                    <span>3 Items</span>
+                </div>
+                <button class="close-btn" onclick="closeCart()">×</button>
+            </div>
+
+            <!-- Cart Item 1 -->
+            <div class="cart-item">
+                <img src="SPAR Select Urad Dal 500G.png" alt="SPAR Select Urid Dal" class="item-image">
+                <div class="item-details">
+                    <div class="item-name">SPAR Select Urid Dal</div>
+                    <div class="item-weight">500G</div>
+                    <div class="item-price">₹110</div>
+                    <div class="save-later">
+                        Save For later <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="bill-details">
+                    <div class="bill-header">Bill Details</div>
+                    <div class="bill-row">
+                        <span>Total qty (1)</span>
+                        <span>₹100</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Handling fee</span>
+                        <span>₹10</span>
+                    </div>
+                    <div class="bill-row total">
+                        <span>To Pay</span>
+                        <span>₹110/-</span>
+                    </div>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Cart Item 2 -->
+            <div class="cart-item">
+                <img src="badam.png" alt="Drink" class="item-image">
+                <div class="item-details">
+                    <div class="item-name">Badam Drink</div>
+                    <div class="item-weight">150 ML</div>
+                    <div class="item-price">₹40</div>
+                    <div class="save-later">
+                        Save For later <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="bill-details">
+                    <div class="bill-header">Bill Details</div>
+                    <div class="bill-row">
+                        <span>Total qty (1)</span>
+                        <span>₹30</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Handling fee</span>
+                        <span>₹10</span>
+                    </div>
+                    <div class="bill-row total">
+                        <span>To Pay</span>
+                        <span>₹40/-</span>
+                    </div>
+                   <a href="checkout.html"> <button class="buy-now-btn">Buy Now</button></a>
+                </div>
+            </div>
+
+            <!-- Cart Item 3 -->
+            <div class="cart-item">
+                <img src="Apple Royalgala.png" alt="Apple Royalgala" class="item-image">
+                <div class="item-details">
+                    <div class="item-name">Apple Royalgala</div>
+                    <div class="item-weight">500kg</div>
+                    <div class="item-price">₹114.5</div>
+                    <div class="save-later">
+                        Save For later <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="bill-details">
+                    <div class="bill-header">Bill Details</div>
+                    <div class="bill-row">
+                        <span>Total qty (1)</span>
+                        <span>₹100</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Handling fee</span>
+                        <span>₹14.5</span>
+                    </div>
+                    <div class="bill-row total">
+                        <span>To Pay</span>
+                        <span>₹114.5/-</span>
+                    </div>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Promo Banner -->
+<section class="promo-banner">
+  <img src="deals promo.png" alt="One Stop Shop" />
+</section>
+
+    <section class="product-listing">
+  <h3 class="deals-head">Top Selling 25% Off</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="Premium Chicken Whole Skinless 1.png" alt="">
+      <p class="title">Premium Chicken Whole <br>Skinless<br><span>250 GM</span></p>
+      <p class="price">₹74.75<span><button>4 Options</button></span></p>
+    </div>
+    <div class="product-card">
+      <img src="Chicken Boneless Breast Fillet.png" alt="">
+      <p class="title">Chicken Boneless <br>Breast Fillet<br><span>250 GM</span></p>
+      <p class="price">₹107.25<span><button>4 Options</button></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Goat Currycut.png" alt="">
+      <p class="title">Goat CurryCut<br><span>250 GM</span></p>
+     
+       <p class="price">₹212.25<span><button>4 Options</button></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Chicken Liver Cut Pieces U.png" alt="">
+      <p class="title">Chicken Liver Cut<br>Pieces<br><span>250 GM</span></p>
+      
+       <p class="price">₹249.75<span><button>4 Options</button></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="chicken whole with skin.png" alt="">
+      <p class="title">Chicken Dressed With <br>Skin Whole<br><span>250 GM</span></p>
+      <p class="price">₹59.75<span><button>4 Options</button></span></p>
+      
+    </div>
+
+    <div class="product-card">
+      <img src="Premium Chicken Drumstick Skinless U.png" alt="">
+      <p class="title">Premium Chicken <br>Drumstick Skinless<br><span>250 GM</span></p>
+      <p class="price">₹107.25<span><button>4 Options</button></span></p>
+    </div>
+ </div>
+
+  <!----------Dairy Bread, Eggs-->
+  <h3 class="deals-head">Best Deals Up to 20% Off</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="Jersey Badam Flavoured Milk 190ML.png" alt="">
+      <p class="title">Jersey Badam Flavoured <br>Milk 190ML<br><span>190ML</span></p>
+      <p class="price">₹40<span><img src="plus.png"></span></p>
+    </div>
+    <div class="product-card">
+      <img src="Nandini Goodlife Milk 500GM.png" alt="">
+      <p class="title">Nandini Goodlife Milk<br>500GM<span>500GM</span></p>
+      <p class="price">₹29<span><img src="plus.png"></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Nandini Goodlife Milk 180ML.png" alt="">
+      <p class="title">Nandini Goodlife Milk<br>180ML<span>500GM</span></p>
+      <p class="price">₹14<span><img src="plus.png"></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Nandini Slim Uht Milk 1L.png" alt="">
+      <p class="title">Nandini Slim Unt Milk 1L<br><span>500GM</span></p>
+     <p class="price">₹71<span><img src="plus.png"></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Milky Mist Paneer-P.png" alt="">
+      <p class="title">Milky Mist Paneer<br><span>200GM</span></p>
+      <p class="price">₹128<span><button>2 Options</button></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Heritage Premium Badam Milk With Badam Bits 180ML.png" alt="">
+      <p class="title">Nandini Goodlife Milk<br><span>500GM</span></p>
+      <p class="price">₹35<span><img src="plus.png"></span></p>
+    </div>
+   
+  </div>
+
+  <!-----Buy More, Save More-->
+   <h3 class="deals-head">Trending Items</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="SPAR Select Urad Dal 500G.png" alt="">
+      <p class="title">SPAR Select Urad Dal<br>500GM<span>500GM</span></p>
+      <p class="price">₹110<span><img src="plus.png"></span></p>
+    </div>
+    <div class="product-card">
+      <img src="Bhagyalakshmi Fried Gram-P.png" alt="">
+      <p class="title">Bhagiyalakshmi Fried<br>Gram<span>250GM</span></p>
+      <p class="price">₹40<span><button>2 Options</button></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="moongdal.png" alt="">
+      <p class="title">Popular Moong Dal1KG<br><span>1 KG</span></p>
+      <p class="price">₹159<span><img src="plus.png"></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Double Beans.png" alt="">
+      <p class="title">SPAR Select Spotted<br>Double Beans<span>200GM</span></p>
+    <p class="price">₹150<span><button>2 Options</button></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Loose Bestprice Fried Gram.png" alt="">
+      <p class="title">Loose BestPrice Fried<br>Gram<span>250GM</span></p>
+     <p class="price">₹42.25<span><button>3 Options</button></span></p>
+    </div>
+
+    <div class="product-card">
+      <img src="Popular Moong Dal 2KG.png" alt="">
+      <p class="title">Popular MoongDal 2KG<br><span>2KG</span></p>
+     <p class="price">₹258<span><img src="plus.png"></span></p>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <div class="footer-logo">
+        <img src="logo.png" alt="Logo">
+        <h2>GroceryHub</h2>
+      </div>
+      <p>GroceryHub brings its customers low prices every day. We offer a wide choice covering fresh & packaged food, grains, pulses, dairy, frozen, plastics, utensils, crockery, travel, stationery, & more. SPAR has 13,900 stores in 48 countries. In India, SPAR has 23 stores across 8 cities.</p>
+      <div class="contact-info">
+        <img src="Mail.png" alt="Email">
+        <span>business@groceryhub.com</span>
+      </div>
+      <div class="contact-info">
+        <img src="Internet.png" alt="Website">
+        <span>www.Grocery.in</span>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3>Our Services</h3>
+      <a href="#">Your Account</a>
+      <a href="#">FAQs</a>
+      <a href="#">Store List</a>
+    </div>
+
+    <div class="footer-section">
+      <h3>Let Us Help You</h3>
+      <a href="#">Help & Support</a>
+      <a href="#">Share Feedback</a>
+      <a href="#">Call Us</a>
+    </div>
+
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <a href="#">About Us</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Return & Refund Policy</a>
+
+      <h3>Connect With Us</h3>
+      <div class="social-icons">
+        <img src="Item.png" alt="Facebook">
+        <img src="Item H.png" alt="Twitter">
+        <img src="Item P.png" alt="Instagram">
+        <img src="Item 9.png" alt="LinkedIn">
+      </div>
+
+      <div class="store-buttons">
+        <img src="Link → app-store-image.png" alt="App Store">
+        <img src="Link → paly-store-image.png" alt="Google Play">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    GroceryHub India © All rights Reserved
+  </div>
+</footer>
+<script src="script.js"></script>
+    
+</body>
+</html>

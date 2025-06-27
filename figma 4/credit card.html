@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Details</title>
+    <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #000;">
+    <section class="credit-card">
+    <div class="card-image">
+        <img src="credit image.png">
+ </div>
+   <div class="card-container">
+  <a href="checkout.html"><div class="cancel">Cancel</div></a>
+  <h1>Pay Amount <span>$40/-</span></h1>
+
+  <h2>Card Number</h2>
+  <input type="text" class="card-input" placeholder="xxxx xxxx xxxx xxxx">
+  <div class="card-type">
+    <img src="visa.png" alt="Visa">
+    <img src="card.png" alt="Mastercard">
+     <img src="red.png" alt="Mastercard">
+  </div>
+
+  <div class="card-details">
+    <div style="width: 48%;">
+      <h2>CVV/CVC</h2>
+      <input type="text" class="card-input" placeholder="123">
+    </div>
+    <div style="width: 48%;">
+      <h2>Expiry</h2>
+      <input type="text" class="card-input" placeholder="MM / YY">
+    </div>
+  </div>
+
+  <button class="payment-btn" onclick="window.location.href='confirmed.html'">Make Payment</button>
+</div>
+</section>
+   
+
+                   <script src="script.js"></script>
+</body>
+</html>
